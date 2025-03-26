@@ -6,8 +6,9 @@ uniform vec2 res;
 
 void main() {
 		vec2 uv = gl_FragCoord.xy / res;
-		// vec2 center = vec2(0.5, 0.5);
-		// float dist = length(uv - center) * 10;
-		// float ripple = sin(distance(uv, center) - time) * 0.05;
-		FragColor = vec4(uv, 0.25, 1);
+		vec2 center = vec2(0.5, 0.5);
+		float dist = length(uv - center) * 10;
+		float ripple = sin(dist * 20 - time * 4);
+		uv += ripple * normalize(uv - center);
+		FragColor = vec4(uv, 0.5, 1);
 }

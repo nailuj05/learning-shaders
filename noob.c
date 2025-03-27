@@ -13,7 +13,7 @@ int main(int argc, const char **argv) {
 	int run = noob_has_flag(argc, argv, "run");
 	
   if (noob_has_flag(argc, argv, "basic")) {
-		noob_run("cc "BASIC".c -o "BASIC" "RLBUILD);
+		noob_run("cc -Wall -Wextra -Werror -Ishared "BASIC".c -o "BASIC" "RLBUILD);
 		if (run) noob_run("./"BASIC);
   }
 

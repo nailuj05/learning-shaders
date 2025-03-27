@@ -2,26 +2,23 @@
 // Here I explore some simple shaders to get started.
 // This C program is just a wrapper using raylib to get a window in which I can draw with a shader.
 // Shaders themselves are the .fs (fragement shader) files in this folder.
+// Cycle through shaders using SPACE, hide UI with H
 
 #include <stdlib.h>
 #include <raylib.h>
 #include "../noob.h"
+#include "../shared/reload.h"
 
 #define FONTSIZE 30
 
 char *shaders[] = {"basic.fs", "ripple.fs", "ripples.fs", "frac.fs", NULL};
-size_t si = 0;
-
-Shader shader;
-int last_modified = 0;
-int time_loc, res_loc;
 
 Vector2 res = {1000, 1000};
 
 int GetNextShader();
-void ReloadShader(int);
 
 int main(int argc, char **argv) {
+	if (argc == 0) exit(1);
 	_noob_set_wdir(argv[0]);
 
 	SetTargetFPS(60);
@@ -29,14 +26,15 @@ int main(int argc, char **argv) {
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 	
 	Rectangle rect = {0, 0, 800, 600};
+	int drawText = 1;
 
 	float s_time = 0.0f;
-	ReloadShader(1);
+	ReloadShader(shaders, 1);
 	
 	while (!WindowShouldClose()) {
 		// Switch and/or reload shader (when modified)
 		int f = GetNextShader();
-		ReloadShader(f);
+		ReloadShader(shaders, f);
 
 		res.x = GetScreenWidth();
 		res.y = GetScreenHeight();
@@ -57,9 +55,12 @@ int main(int argc, char **argv) {
 		EndShaderMode();
 
 		// Draw FPS and Shader name
-		int text_width = MeasureText(shaders[si], FONTSIZE) / 2;
-		DrawText(shaders[si], res.x / 2 - text_width, 5, FONTSIZE, RED);
-		DrawFPS(5, 5);
+		drawText = IsKeyPressed(KEY_H) ? !drawText : drawText;
+		if(drawText) {
+			int text_width = MeasureText(shaders[si], FONTSIZE) / 2;
+			DrawText(shaders[si], res.x / 2 - text_width, 5, FONTSIZE, RED);
+			DrawFPS(5, 5);
+		}
 
 		EndDrawing();
 	}
@@ -78,19 +79,3 @@ int GetNextShader() {
 	return 0;
 }
 
-void ReloadShader(int force) {
-	int modified = noob_get_last_modified(shaders[si]);
-	if(modified > last_modified || force) {
-		last_modified = modified;
-		Shader new_shader = LoadShader(0, shaders[si]);
-		if (new_shader.id != 0) {
-			UnloadShader(shader);
-			shader = new_shader;
-			time_loc = GetShaderLocation(shader, "time");
-			res_loc = GetShaderLocation(shader, "res");
-			printf("shader reloaded\n");
-		} else {	
-			printf("shader reloading failed\n");
-		}
-	}
-}

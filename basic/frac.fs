@@ -7,10 +7,11 @@ uniform vec2 res;
 void main() {
 		 vec2 c = vec2(-0.5251993, -0.5251993) * sin(time * 0.5); 
 		 vec2 uv = (gl_FragCoord.xy / res);
-		 // uv.x *= res.x / res.y;
-		 vec2 z = (uv - 0.5) * 2 / sin(0.5 * time);
+		 float aspect = res.x / res.y;
+		 uv.x *= aspect;
+		 vec2 z = (uv - vec2(0.5 * aspect, 0.5)) * (2 / sin(0.25 * time));
 
-		 int maxIter = 500;
+		 int maxIter = 600;
 		 int i = 0;
 		 for (i = 0; i < maxIter; i++) {
 		 		 float x = z.x * z.x - z.y * z.y + c.x;

@@ -12,6 +12,7 @@
 #define FONTSIZE 30
 
 char *shaders[] = {"basic.fs", "ripple.fs", "ripples.fs", "frac.fs", NULL};
+int time_loc, res_loc;
 
 Vector2 res = {1000, 1000};
 
@@ -29,12 +30,14 @@ int main(int argc, char **argv) {
 	int drawText = 1;
 
 	float s_time = 0.0f;
-	ReloadShader(shaders, 1);
-	
+
 	while (!WindowShouldClose()) {
 		// Switch and/or reload shader (when modified)
 		int f = GetNextShader();
-		ReloadShader(shaders, f);
+		if(ReloadShader(shaders, f)) {
+			time_loc = GetShaderLocation(shader, "time");
+			res_loc = GetShaderLocation(shader, "res");
+		}
 
 		res.x = GetScreenWidth();
 		res.y = GetScreenHeight();

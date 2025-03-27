@@ -9,7 +9,7 @@
 
 #define FONTSIZE 30
 
-char *shaders[] = {"basic.fs", "frac.fs", "ripple.fs", NULL};
+char *shaders[] = {"basic.fs", "ripple.fs", "ripples.fs", "frac.fs", NULL};
 size_t si = 0;
 
 Shader shader;

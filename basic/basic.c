@@ -76,7 +76,6 @@ int main(int argc, char **argv) {
 int GetNextShader() {
 	if(IsKeyPressed(KEY_SPACE)) {
 		si = shaders[si + 1] == NULL ? 0 : si + 1;
-		printf("%zu\n", si);
 		return 1;
 	}
 	return 0;

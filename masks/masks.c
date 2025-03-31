@@ -5,7 +5,7 @@
 #include "../noob.h"
 #include "../shared/reload.h"
 #define RAYGUI_IMPLEMENTATION
-#include "raygui.h"
+#include "../shared/raygui.h"
 
 #define FONTSIZE 30
 

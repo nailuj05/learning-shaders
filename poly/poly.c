@@ -13,7 +13,7 @@
 
 #define FONTSIZE 30
 
-char *shaders[] = {"poly.fs" };
+char *shaders[] = {"poly.fs"};
 Vector2 res = {1000, 1000};
 
 int main(int argc, char** argv) {
@@ -24,6 +24,10 @@ int main(int argc, char** argv) {
 	InitWindow(res.x, res.y, "Poly");
 	SetWindowState(FLAG_WINDOW_RESIZABLE);
 
+	Shader grid = LoadShader(0, "grid.fs");
+	int grid_res_loc = GetShaderLocation(grid, "res");
+	int grid_scale_loc = GetShaderLocation(grid, "scale");
+	
 	ReloadShader(shaders, 0);
 	int res_loc = GetShaderLocation(shader, "res");
 	int scale_loc = GetShaderLocation(shader, "scale");
@@ -39,12 +43,19 @@ int main(int argc, char** argv) {
 		res.x = GetScreenWidth();
 		res.y = GetScreenHeight();
 
+		SetShaderValue(grid, grid_res_loc, &res, SHADER_UNIFORM_VEC2);
+		SetShaderValue(grid, grid_scale_loc, &scale, SHADER_UNIFORM_FLOAT);
+		
 		SetShaderValue(shader, res_loc, &res, SHADER_UNIFORM_VEC2);
 		SetShaderValue(shader, scale_loc, &scale, SHADER_UNIFORM_FLOAT);
 		SetShaderValue(shader, thick_loc, &thick, SHADER_UNIFORM_FLOAT);
 
 		BeginDrawing();
 		ClearBackground(BLACK);
+
+		BeginShaderMode(grid);
+		DrawRectangle(0, 0, res.x, res.y, WHITE);
+		EndShaderMode();
 
 		BeginShaderMode(shader);
 		DrawRectangle(0, 0, res.x, res.y, WHITE);
@@ -57,4 +68,9 @@ int main(int argc, char** argv) {
 			
 		EndDrawing();
 	}
+
+	UnloadShader(grid);
+	UnloadShader(shader);
+
+	return 0;
 }

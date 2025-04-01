@@ -28,5 +28,6 @@ void main() {
 	float ub = y + thick * (df(uv.x - center.x) + center.y);
 
 	float t = smoothstep(y, lb, uv.y) + 1 - smoothstep(ub, y, uv.y);
-	finalColor = vec4(t);
+	finalColor.rgb = vec3(t);
+	finalColor.a = 1 - t;
 }

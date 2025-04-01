@@ -5,6 +5,7 @@
 
 #define BASIC "basic/basic"
 #define MASKS "masks/masks"
+#define POLY "poly/poly"
 #define GOL "game-of-life/gol"
 
 int main(int argc, const char **argv) {
@@ -22,6 +23,10 @@ int main(int argc, const char **argv) {
 	else if (noob_has_flag(argc, argv, "masks")) {
 		noob_run("cc "CFLAGS" "MASKS".c -o "MASKS" "RLBUILD);
 		if (run) noob_run("./"MASKS);
+	}
+	else if (noob_has_flag(argc, argv, "poly")) {
+		noob_run("cc "CFLAGS" "POLY".c -o "POLY" "RLBUILD);
+		if (run) noob_run("./"POLY);
 	}
 	else if (noob_has_flag(argc, argv, "gol")) {
 		noob_run("cc "CFLAGS" "GOL".c -o "GOL" "RLBUILD);

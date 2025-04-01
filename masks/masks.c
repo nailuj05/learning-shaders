@@ -23,7 +23,6 @@ int main(int argc, char **argv) {
 	SetTargetFPS(60);
 	InitWindow(res.x, res.y, "Masks");
 
-	GuiLoadStyle("cyber.rgs");
 	GuiSetStyle(DEFAULT, TEXT_SIZE, FONTSIZE);
 
 	Texture2D texture = LoadTexture("tex.png");

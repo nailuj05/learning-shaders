@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 	SetTargetFPS(60);
 	InitWindow(res.x, res.y, "Game of Life");
 	
-	Shader shader = LoadShader(NULL, "gol.glsl");
+	Shader shader = LoadShader(NULL, "gol.fs");
 	
 	// Create 2 rts, one for reading, one for writing
 	RenderTexture2D bufs[2];

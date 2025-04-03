@@ -29,7 +29,7 @@ int main(int argc, const char **argv) {
 		if (run) noob_run("./"POLY);
 	}
 	else if (noob_has_flag(argc, argv, "gol")) {
-		noob_run("cc "CFLAGS" "GOL".c -o "GOL" "RLBUILD);
+		noob_run("cc "CFLAGS" "GOL".c -o "GOL" -O2 "RLBUILD);
 		if (run) noob_run("./"GOL);
 	}
 

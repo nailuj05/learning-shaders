@@ -1,8 +1,9 @@
-// ---------- Basics ----------- //
+// ---------- Basics -----------
 // Here I explore some simple shaders to get started.
-// This C program is just a wrapper using raylib to get a window in which I can draw with a shader.
-// Shaders themselves are the .fs (fragement shader) files in this folder.
-// Cycle through shaders using SPACE, hide UI with H
+// This C program is just a wrapper using raylib to
+// get a window in which I can draw with a shader.  Shaders themselves
+// are the .fs (fragement shader) files in this folder.  Cycle through
+// shaders using SPACE, hide UI with H
 
 #include <stdlib.h>
 #include <raylib.h>

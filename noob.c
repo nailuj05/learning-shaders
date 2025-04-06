@@ -7,6 +7,7 @@
 #define MASKS "masks/masks"
 #define POLY "poly/poly"
 #define GOL "game-of-life/gol"
+#define RAYM "raymarching/raymarch"
 
 int main(int argc, const char **argv) {
   noob_rebuild_yourself(argc, argv);
@@ -31,6 +32,10 @@ int main(int argc, const char **argv) {
 	else if (noob_has_flag(argc, argv, "gol")) {
 		noob_run("cc "CFLAGS" "GOL".c -o "GOL" -O2 "RLBUILD);
 		if (run) noob_run("./"GOL);
+	}
+	else if (noob_has_flag(argc, argv, "raymarch")) {
+		noob_run("cc "CFLAGS" "RAYM".c -o "RAYM" -O2 "RLBUILD);
+		if (run) noob_run("./"RAYM);
 	}
 
   return 0;

@@ -6,7 +6,7 @@
 #define FONTSIZE 30
 
 Vector2 res = {1000, 1000};
-Vector2 renderRes = {1000, 1000};
+Vector2 renderRes = {500, 500};
 
 void RandomStart(RenderTexture2D *bufs, int rid) {
 	Texture2D tmp = LoadTextureFromImage(GenImageWhiteNoise(renderRes.x, renderRes.y, 0.8f));

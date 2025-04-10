@@ -4,6 +4,8 @@ uniform float time;
 uniform vec2 res;
 out vec4 finalColor;
 
+float PI = 3.14156;
+
 float sd_sphere(vec3 p, vec3 center, float radius) {
     return length(p - center) - radius;
 }
@@ -16,8 +18,8 @@ vec4 smin(float a, vec3 ca, float b, vec3 cb, float k) {
 }
 
 vec4 map(vec3 p) {
-	float d1 = sd_sphere(p, vec3(sin(time + 3.141) * 2, 0.0, 3.0), 1.0);
-	float d2 = sd_sphere(p, vec3(sin(time) * 2, 0.0, 3.0), 1.0);
+	float d1 = sd_sphere(p, vec3(sin(time + PI) * 1.5, 0.0, 3.0), 1.0);
+	float d2 = sd_sphere(p, vec3(sin(time)      * 1.5, 0.0, 3.0), 1.0);
 		vec4 rgbd = smin(d1, vec3(1.,0.,0.), d2, vec3(0.,1.,0.), 0.5);
     return rgbd;
 }

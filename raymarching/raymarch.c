@@ -3,7 +3,7 @@
 #include <rlgl.h>
 #include "../noob.h"
 
-Vector2 res = {2300, 1000};
+Vector2 res = {1000, 1000};
 
 int main(int argc, char** argv) {
 	if (argc == 0) exit(1);

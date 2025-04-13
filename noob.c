@@ -9,6 +9,7 @@
 #define GOL "game-of-life/gol"
 #define RAYM "raymarching/raymarch"
 #define NOISE "noise/noise"
+#define S3D "3D/3d"
 
 int main(int argc, const char **argv) {
   noob_rebuild_yourself(argc, argv);
@@ -41,6 +42,10 @@ int main(int argc, const char **argv) {
 	else if (noob_has_flag(argc, argv, "noise")) {
 		noob_run("cc "CFLAGS" "NOISE".c -o "NOISE" "RLBUILD);
 		if (run) noob_run("./"NOISE);
+	}
+	else if (noob_has_flag(argc, argv, "3D")) {
+		noob_run("cc "CFLAGS" "S3D".c -o "S3D" "RLBUILD);
+		if (run) noob_run("./"S3D);
 	}
 
   return 0;

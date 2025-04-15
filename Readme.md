@@ -19,6 +19,11 @@ In here you can find some basic shaders I wrote to get started, learning the dif
 
 Here I experimented with some simple masking for images (like a GPU-accelerated graphics program) - became [TruMasker](https://github.com/nailuj05/tru-masker)
 
+## Poly
+
+I wanted to build a simple graph plotter completely within a shader, I'd like to explore this further in the future
+
+![Graph](_res/graph.png)
 
 ## Game of Life
 

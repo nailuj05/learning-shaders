@@ -12,7 +12,7 @@
 
 #define FONTSIZE 30
 
-char *shaders[] = {"basic.fs", "ripple.fs", "ripples.fs", "fract.fs", "frac.fs", "eventhorizon.fs", NULL};
+char *shaders[] = {"basic.fs", "ripple.fs", "ripples.fs", "fract.fs", "frac.fs", "eventhorizon.fs", "xor_dev.glsl", NULL};
 int time_loc, res_loc;
 
 Vector2 res = {1000, 1000};
